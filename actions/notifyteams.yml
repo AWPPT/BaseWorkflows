@@ -30,12 +30,12 @@ jobs:
                 find: '<REPLACE_RELEASE>'
                 replace: ${{ inputs.releasename }}
           - name: message stage
-            uses: fjogeleit/http-request-action@v1
-            env:
-                strBasePost: ${{ steps.findandreplace2.outputs.value }}
-            with:
-                url: ${{ vars.MS_TEAMS_WEBHOOK_URL }}
-                method: 'POST'
-                preventFailureOnNoResponse: true
-                customHeaders: '{"Content-Type": "application/json"}'
-                data: ${{ env.strBasePost }}
+#            uses: fjogeleit/http-request-action@v1
+#            env:
+#                strBasePost: ${{ steps.findandreplace2.outputs.value }}
+#            with:
+#                url: ${{ vars.MS_TEAMS_WEBHOOK_URL }}
+#                method: 'POST'
+#                preventFailureOnNoResponse: true
+#                customHeaders: '{"Content-Type": "application/json"}'
+#                data: ${{ env.strBasePost }}

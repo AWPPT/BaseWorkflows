@@ -13,7 +13,7 @@ jobs:
         - name: Run script file
           id: releasescript
           run: |
-             chmod +x ./scripts/test.sh
+             chmod +x ./.github/baseworkflows/scripts/test.sh
              ./scripts/test.sh
           shell: bash
   logversion:
@@ -29,7 +29,7 @@ jobs:
             echo "::endgroup::"
   startmessage:
     needs: [collectversion]  
-    uses: ./.github/workflows/notifyteams.yml
+    uses: ./.github/baseworkflows/actions/notifyteams.yml
     with:
       repositoryname: ${{ github.event.repository.name }}
       releasename: ${{ needs.collectversion.outputs.releasevalue }}     
