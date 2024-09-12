@@ -30,6 +30,8 @@ jobs:
                 find: '<REPLACE_RELEASE>'
                 replace: ${{ inputs.releasename }}
           - name: message stage
+            run: echo "Notification sent"
+
 #            uses: fjogeleit/http-request-action@v1
 #            env:
 #                strBasePost: ${{ steps.findandreplace2.outputs.value }}

@@ -1,0 +1,14 @@
+name: Starter Action
+description: just a Starter
+
+inputs:
+  actiontype: 
+    description: the wished action
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: notification
+      if: ${{ inputs.actiontype == 'notification'}}
+      uses: ./.github/starter.yml
