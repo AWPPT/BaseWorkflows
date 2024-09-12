@@ -9,6 +9,8 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Check out repository
+      uses: actions/checkout@4  
     - name: notification
       if: ${{ inputs.actiontype == 'notification'}}
       uses: ./.github/workflows/starter.yml
