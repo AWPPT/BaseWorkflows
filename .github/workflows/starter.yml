@@ -13,7 +13,7 @@ jobs:
         - name: Run script file
           id: releasescript
           run: |
-             chmod +x ./.github/baseworkflows/scripts/test.sh
+             chmod +x ./scripts/test.sh
              ./scripts/test.sh
           shell: bash
   logversion:
