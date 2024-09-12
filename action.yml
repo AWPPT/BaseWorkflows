@@ -11,7 +11,7 @@ runs:
   steps:
     - name: notification
       if: ${{ inputs.actiontype == 'notification'}}
-      uses: ./.github/starter.yml
+      uses: ./.github/workflows/starter.yml
 #      run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
 #      shell: bash
 #      env:
