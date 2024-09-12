@@ -29,7 +29,7 @@ jobs:
             echo "::endgroup::"
   startmessage:
     needs: [collectversion]    
-    uses: ./actions/notifyteams.yml
+    uses: ./.github/workflows/notifyteams.yml
     with:
       repositoryname: ${{ github.event.repository.name }}
       releasename: ${{ needs.collectversion.outputs.releasevalue }}     
