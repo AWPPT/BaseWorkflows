@@ -16,11 +16,10 @@ runs:
         GITHUB_ACTION_PATH: ${{ github.action_path }}  
     - name: delegatestuff
       if: ${{ inputs.actiontype == 'notification'}}
-      #uses: "${{ github.action_path }}/.github/workflows/notify.yml"
+      uses: "${{ github.action_path }}/../.github/workflows/notify.yml"
       #uses: "AWPPT/baseworkflows/.github/workflows/notify.yml@main"
-#      with:
-#        actiontype: ${{ inputs.actiontype }}
-      run: echo "action path ${{ github.action_path }}"
+      with:
+        actiontype: ${{ inputs.actiontype }}
       shell: bash       
     - name: defaultstuff
       if: ${{ inputs.actiontype != 'notification'}}
