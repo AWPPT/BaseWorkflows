@@ -14,11 +14,12 @@ runs:
   steps:
     - name: delegatestuff
       if: ${{ inputs.actiontype == 'notification'}}
-      uses: ${{ env.honey }}/../.github/workflows/notify.yml
+      run: ${{ env.honey }}/../.github/workflows/notify.yml
       with:
         actiontype: ${{ inputs.actiontype }}
       env: 
         honey: ${{ inputs.actiontype }}
+      shell: bash
     - name: defaultstuff
       if: ${{ inputs.actiontype != 'notification'}}
       run: echo "The calling application did not want a notification"
