@@ -8,15 +8,17 @@ inputs:
   actiontype: 
     description: the wished action
     required: true
-
 runs:
   using: "composite"
+
   steps:
     - name: delegatestuff
       if: ${{ inputs.actiontype == 'notification'}}
-      uses: ${{ inputs.action_path }}/../.github/workflows/notify.yml
+      uses: ${{ env.honey }}/../.github/workflows/notify.yml
       with:
         actiontype: ${{ inputs.actiontype }}
+      env: 
+        honey: ${{ inputs.actiontype }}
     - name: defaultstuff
       if: ${{ inputs.actiontype != 'notification'}}
       run: echo "The calling application did not want a notification"
