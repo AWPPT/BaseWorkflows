@@ -35,6 +35,7 @@ jobs:
         id: dononecho
         run: echo "The actiontype was not 'notification' but '${{ inputs.actiontype }}'"
   finalizing:
+    needs: [executetype]            
     runs-on: ubuntu-latest        
     steps:
       - name: DoTheFinalThings
