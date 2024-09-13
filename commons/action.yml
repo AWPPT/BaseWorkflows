@@ -2,6 +2,9 @@ name: Starter Action
 description: just a Starter
 
 inputs:
+  action_path:
+    description: should contain the github action_path
+    required: true
   actiontype: 
     description: the wished action
     required: true
@@ -10,11 +13,8 @@ runs:
   using: "composite"
   steps:
     - name: delegatestuff
-      env:
-        GITHUB_ACTION_PATH: ${{ github.action_path }}  
       if: ${{ inputs.actiontype == 'notification'}}
-      uses: "${{ env.GITHUB_ACTION_PATH }}/../.github/workflows/notify.yml"
-      #uses: "AWPPT/baseworkflows/.github/workflows/notify.yml@main"
+      uses: "${{ input.actionpath }}/../.github/workflows/notify.yml"
       with:
         actiontype: ${{ inputs.actiontype }}
       shell: bash       
