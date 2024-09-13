@@ -14,9 +14,9 @@ runs:
   steps:
     - name: delegatestuff
       if: ${{ inputs.actiontype == 'notification'}}
-      run: ${{ env.honey }}/../.github/workflows/notify.yml
-      with:
-        actiontype: ${{ inputs.actiontype }}
+      run: echo ${{ inputs.actiontype }}/../.github/workflows/notify.yml
+#      with:
+#        actiontype: ${{ inputs.actiontype }}
       env: 
         honey: ${{ inputs.actiontype }}
       shell: bash
