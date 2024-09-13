@@ -9,12 +9,9 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Set GitHub Path
-      run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
-      shell: bash
+    - name: delegatestuff
       env:
         GITHUB_ACTION_PATH: ${{ github.action_path }}  
-    - name: delegatestuff
       if: ${{ inputs.actiontype == 'notification'}}
       uses: "${{ env.GITHUB_ACTION_PATH }}/../.github/workflows/notify.yml"
       #uses: "AWPPT/baseworkflows/.github/workflows/notify.yml@main"
