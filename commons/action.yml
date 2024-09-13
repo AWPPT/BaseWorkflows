@@ -1,0 +1,22 @@
+name: Starter Action
+description: just a Starter
+
+inputs:
+  actiontype: 
+    description: the wished action
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: delegatestuff
+      if: ${{ inputs.actiontype == 'notification'}}
+      uses: "${{ github.action_path }}/.github/workflows/notify.yml"
+      with:
+        actiontype: ${{ inputs.actiontype }}
+    - name: defaultstuff
+      if: ${{ inputs.actiontype != 'notification'}}
+      run: echo "The calling application did not want a notification"
+      shell: bash
+
+

@@ -1,0 +1,43 @@
+name: Notification Action
+
+on: 
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      actiontype: 
+        description: 'What shall be done'
+        type: string        
+        required: true
+      actionpar: 
+        description: "A message content"
+        default: "There was no message from caller!"
+        type: string
+        required: false
+jobs:
+  collectvalues:
+    runs-on: ubuntu-latest    
+    outputs:
+      preparedmessage: "Caller sent: ${{ inputs.actionpar }}"    
+    steps:
+      - name: DoStartEcho
+        id: startecho
+        run: echo "******* message start *******"
+  executetype:
+    runs-on: ubuntu-latest    
+    needs: [collectvalues]        
+    steps:
+      - name: DoTheEcho
+        if: ${{ inputs.actiontype == 'notification'}}      
+        id: doecho
+        run: echo "${{ needs.collectvalues.outputs.preparedmessage }}"
+      - name: DoTheNonEcho
+        if: ${{ inputs.actiontype != 'notification'}}      
+        id: dononecho
+        run: echo "The actiontype was not 'notification' but '${{ inputs.actiontype }}'"
+  finalizing:
+    runs-on: ubuntu-latest        
+    steps:
+      - name: DoTheFinalThings
+        id: dofinalize
+        run: echo "******* message end *******"
+                    
