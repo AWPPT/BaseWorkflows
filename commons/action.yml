@@ -14,7 +14,7 @@ runs:
   steps:
     - name: delegatestuff
       if: ${{ inputs.actiontype == 'notification'}}
-      uses: "${{ input.actionpath }}/../.github/workflows/notify.yml"
+      uses: "${{ inputs.actionpath }}/../.github/workflows/notify.yml"
       with:
         actiontype: ${{ inputs.actiontype }}
       shell: bash       
