@@ -21,6 +21,7 @@ runs:
 #      with:
 #        actiontype: ${{ inputs.actiontype }}
       run: echo "action path ${{ github.action_path }}"
+      shell: bash       
     - name: defaultstuff
       if: ${{ inputs.actiontype != 'notification'}}
       run: echo "The calling application did not want a notification"
